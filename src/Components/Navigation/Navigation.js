@@ -4,6 +4,7 @@ import AuthUserContext from "../AuthUserContext/AuthUserContext";
 import SignOutButton from "../SignOut/SignOut";
 
 import * as routes from "../../Constants/Routes";
+import "./Navigation.css";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
@@ -13,7 +14,7 @@ const Navigation = () => (
 
 //Navation for logged in users
 const NavigationAuth = () => (
-  <ul>
+  <ul className="Navigation">
     <li>
       <Link to={routes.HOME}>Home</Link>
     </li>
@@ -34,7 +35,7 @@ const NavigationAuth = () => (
 
 //Navigation for logged out users
 const NavigationNonAuth = () => (
-  <ul>
+  <ul className="Navigation">
     <li>
       <Link to={routes.HOME}>Home</Link>
     </li>

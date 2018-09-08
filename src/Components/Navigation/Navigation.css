@@ -1,0 +1,30 @@
+.Navigation {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 30px;
+  background-color: #efefef;
+}
+
+.Navigation ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.Navigation li {
+  display: inline;
+  margin-right: 30px;
+}
+
+.Navigation li a:active {
+  color: #ff6c67;
+}
+
+.Navigation li a:hover {
+  color: #ff6c67;
+}
