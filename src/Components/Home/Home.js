@@ -12,7 +12,7 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      //users: null,
+      users: null,
       phases: ["Nieuw", "Wachten", "Nog niet actief", "Actief", "Klaar"]
     };
   }
@@ -25,6 +25,7 @@ class HomePage extends Component {
 
   render() {
     const { users } = this.state;
+    console.log("users:", this.state.users);
 
     return (
       <div>
