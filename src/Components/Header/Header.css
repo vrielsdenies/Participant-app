@@ -1,0 +1,14 @@
+.Header {
+  width: 100%;
+  height: 100px;
+  background: #212529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header h1 {
+  font-family: "Source-sans-pro", sans-serif;
+  color: #ff6b6b;
+  font-size: 40px;
+}

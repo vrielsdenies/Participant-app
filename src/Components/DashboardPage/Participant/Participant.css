@@ -1,0 +1,9 @@
+.Participant {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.Badge {
+  display: block !important;
+}
