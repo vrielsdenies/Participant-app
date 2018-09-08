@@ -22,3 +22,15 @@
   text-transform: uppercase;
   text-align: center;
 }
+
+.Filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+}
