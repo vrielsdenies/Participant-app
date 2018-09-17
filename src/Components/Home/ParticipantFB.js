@@ -63,13 +63,12 @@ class ParticipantFB extends React.Component {
   //   this.props.phaseChance(this.props.user, event.target.value);
   // }
 
-  writeUserData(userId, phase) {
-    firebase
-      .database()
-      .ref("users/" + userId)
-      .set({
-        phase: phase
-      });
+  writeUserData(uid, event) {
+    var database = firebase.database();
+
+    database.ref("users/" + this.props.uid).update({
+      phase: event.target.value
+    });
   }
 
   handleExpandClick = () => {

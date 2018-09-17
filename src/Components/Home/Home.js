@@ -43,11 +43,18 @@ class HomePage extends Component {
       <div>
         <div className="Filter">
           <form>
-            <input
-              type="text"
-              onChange={this.onSearchChange}
-              placeholder="Search for user"
-            />
+            <div className="mdl-textfield mdl-js-textfield">
+              <input
+                className="mdl-textfield__input"
+                type="text"
+                id="search"
+                onChange={this.onSearchChange}
+                placeholder="Search for user"
+              />
+              {/* <label className="mdl-textfield__label" htmlFor="search">
+                Search for user
+              </label> */}
+            </div>
           </form>
         </div>
         <div className="Pipeline-Columns">
