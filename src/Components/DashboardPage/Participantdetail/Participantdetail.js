@@ -8,20 +8,20 @@ class ParticipantDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: null
+      user: null
     };
   }
 
   componentDidMount() {
-    // console.log("authuser = ", authUser);
-    //
-    // db.onceGetUsers().then(snapshot =>
-    //   this.setState({ users: snapshot.val() })
-    // );
+    //console.log("authuser = ", authUser);
+
+    db.onceGetUser("Atjkv1xw5gZ5wRv9DpLO6zYlwd43").then(snapshot =>
+      this.setState({ user: snapshot.val() })
+    );
   }
 
   render() {
-    console.log("users = ", this.state.users);
+    console.log("user = ", this.state.user);
     return (
       <div className="ParticipantPage">
         <div>
@@ -30,7 +30,7 @@ class ParticipantDetail extends React.Component {
               <h2 className="mdl-card__title-text">Participant</h2>
             </div>
             <div>
-              <h3 id="username">Username</h3>
+              <h3>Username</h3>
               <h3>Emailaddress</h3>
             </div>
           </div>
