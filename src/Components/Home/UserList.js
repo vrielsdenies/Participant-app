@@ -17,6 +17,7 @@ class UserList extends React.Component {
               users={this.props.user}
               username={user.username}
               email={user.email}
+              uid={user.uid}
               phase={user.phase}
             />
           );

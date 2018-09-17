@@ -14,23 +14,25 @@ const Navigation = () => (
 
 //Navation for logged in users
 const NavigationAuth = () => (
-  <ul className="Navigation">
-    <li>
-      <Link to={routes.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={routes.DASHBOARD}>Dashboard</Link>
-    </li>
-    <li>
-      <Link to={routes.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <Link to={routes.COMPANIES}>Companies</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+  <div className="Navigation">
+    <ul>
+      <li>
+        <Link to={routes.HOME}>Home</Link>
+      </li>
+      <li>
+        <Link to={routes.DASHBOARD}>Dashboard</Link>
+      </li>
+      <li>
+        <Link to={routes.ACCOUNT}>Account</Link>
+      </li>
+      <li>
+        <Link to={routes.COMPANIES}>Companies</Link>
+      </li>
+      <li>
+        <SignOutButton />
+      </li>
+    </ul>
+  </div>
 );
 
 //Navigation for logged out users

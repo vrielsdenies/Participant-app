@@ -1,0 +1,26 @@
+.SignInPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.SignInForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: auto;
+  padding: 20px;
+}
+
+.mdl-textfield {
+  width: 100%;
+}
+
+.mdl-card__actions.mdl-card--border {
+  margin-top: 10px;
+}

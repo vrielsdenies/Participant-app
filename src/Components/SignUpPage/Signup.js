@@ -3,11 +3,23 @@ import { Link, withRouter } from "react-router-dom";
 import { auth, db } from "../../Firebase/";
 
 import * as routes from "../../Constants/Routes";
+import "./Signup.css";
 
 const SignUpPage = ({ history }) => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm history={history} />
+  // <div>
+  //   <h1>SignUp</h1>
+  //   <SignUpForm history={history} />
+  // </div>
+
+  <div className="SignInPage">
+    <div className="demo-card-square mdl-card mdl-shadow--2dp">
+      <div className="mdl-card__title mdl-card--expand">
+        <h2 className="mdl-card__title-text">Sign Up</h2>
+      </div>
+      <div className="mdl-card__actions">
+        <SignUpForm history={history} />
+      </div>
+    </div>
   </div>
 );
 
@@ -66,45 +78,63 @@ class SignUpForm extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={username}
-          onChange={event =>
-            this.setState(byPropKey("username", event.target.value))
-          }
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          value={email}
-          onChange={event =>
-            this.setState(byPropKey("email", event.target.value))
-          }
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={passwordOne}
-          onChange={event =>
-            this.setState(byPropKey("passwordOne", event.target.value))
-          }
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event =>
-            this.setState(byPropKey("passwordTwo", event.target.value))
-          }
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+      <div className="SignUpForm">
+        <form onSubmit={this.onSubmit}>
+          <div className="mdl-textfield mdl-js-textfield">
+            <input
+              className="mdl-textfield__input"
+              value={username}
+              onChange={event =>
+                this.setState(byPropKey("username", event.target.value))
+              }
+              type="text"
+              placeholder="Full Name"
+            />
+          </div>
+          <div className="mdl-textfield mdl-js-textfield">
+            <input
+              className="mdl-textfield__input"
+              value={email}
+              onChange={event =>
+                this.setState(byPropKey("email", event.target.value))
+              }
+              type="text"
+              placeholder="Email Address"
+            />
+          </div>
+          <div className="mdl-textfield mdl-js-textfield">
+            <input
+              className="mdl-textfield__input"
+              value={passwordOne}
+              onChange={event =>
+                this.setState(byPropKey("passwordOne", event.target.value))
+              }
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div className="mdl-textfield mdl-js-textfield">
+            <input
+              className="mdl-textfield__input"
+              value={passwordTwo}
+              onChange={event =>
+                this.setState(byPropKey("passwordTwo", event.target.value))
+              }
+              type="password"
+              placeholder="Confirm password"
+            />
+          </div>
+          <button
+            className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            disabled={isInvalid}
+            type="submit"
+          >
+            Sign Up
+          </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }
