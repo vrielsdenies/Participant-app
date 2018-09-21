@@ -1,5 +1,6 @@
 .Company {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-right: 10px;
+  /* width: 100%;
+  display: block;
+  justify-content: flex-start;
+  align-items: flex-start; */
 }

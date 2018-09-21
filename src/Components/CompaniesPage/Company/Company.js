@@ -55,10 +55,6 @@ class Company extends React.Component {
             <Typography>{this.props.company.address}</Typography>
             <Typography>{this.props.company.place}</Typography>
           </CardContent>
-          {/* <CardContent>
-            <Typography>{this.props.company.address}</Typography>
-            <Typography>{this.props.company.place}</Typography>
-          </CardContent> */}
         </Card>
       </div>
     );

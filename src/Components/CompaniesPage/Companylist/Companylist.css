@@ -1,3 +1,7 @@
 .CompanyList {
-  display: flex;
+  display: grid;
+  max-width: 800px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: 200px;
+  grid-gap: 20px;
 }

@@ -1,6 +1,5 @@
 .Companies {
-  display: flex;
-  flex-wrap: wrap;
+  width: 90%;
   justify-content: center;
-  margin-top: 50px;
+  margin: 50px auto;
 }
