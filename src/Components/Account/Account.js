@@ -3,7 +3,7 @@ import React from "react";
 import AuthUserContext from "../AuthUserContext/AuthUserContext";
 import PasswordChangeForm from "../PasswordchangeForm/Passwordchangeform";
 import withAuthorization from "../WithAuthorization/WithAuthorization";
-import { auth, db } from "../../Firebase/";
+import { firebase, auth, db } from "../../Firebase/";
 
 import "./Account.css";
 
@@ -22,21 +22,37 @@ import "./Account.css";
 //   </AuthUserContext.Consumer>
 // );
 
+var user = firebase.auth.currentUser;
+var uid;
+
+if (user != null) {
+  uid = user.uid;
+}
+
 class AccountPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      username: "",
       email: "",
-      uid: ""
+      phase: ""
     };
   }
 
   componentDidMount() {
-    //var userId = db.ref().child(`users/${"KvlDMDOU3YTd25zeHOGllSyQKCo2"}`);
+    db.onceGetUser(uid).then(snapshot =>
+      this.setState({
+        username: snapshot.val() && snapshot.val().username,
+        email: snapshot.val() && snapshot.val().email,
+        phase: snapshot.val() && snapshot.val().phase
+      })
+    );
   }
 
   render() {
+    console.log("uid", uid);
+    console.log("name", this.state.username);
+
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -47,8 +63,9 @@ class AccountPage extends React.Component {
                   <h2 className="mdl-card__title-text">Account</h2>
                 </div>
                 <div>
-                  <h3>Email: {authUser && authUser.email}</h3>
-                  <h3>Username: {authUser && authUser.displayName}</h3>
+                  <h4>Email: {authUser && authUser.email}</h4>
+                  <h4>Username: {this.state.name}</h4>
+                  <h4>Phase: {this.state.phase}</h4>
                 </div>
               </div>
             </div>
@@ -65,6 +82,12 @@ class AccountPage extends React.Component {
     );
   }
 }
+
+// const AccountPageInfo = () => (
+// <div>
+//
+// </div>
+// );
 
 const authCondition = authUser => !!authUser;
 

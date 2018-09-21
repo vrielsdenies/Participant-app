@@ -6,7 +6,7 @@ class CompanyList extends React.Component {
   render() {
     return (
       <div className="CompanyList">
-        {this.props.companies.map(company => {
+        {Object.values(this.props.companies).map(company => {
           return (
             <Company
               key={company.name}
