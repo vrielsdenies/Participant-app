@@ -19,6 +19,7 @@ class UserList extends React.Component {
               email={user.email}
               uid={user.uid}
               phase={user.phase}
+              company={user.company}
             />
           );
         })}

@@ -80,15 +80,25 @@ class ParticipantFB extends React.Component {
     const { classes } = this.props;
     //const { match } = this.props;
     //const fullName = `${this.props.user.firstname} ${this.props.user.lastname}`;
-
     return (
       <div className="Participant">
         <Card className={classes.card}>
           <CardContent>
-            <Link to={`/user/${this.props.email}`}>
+            {/* <Link to={`/user/${this.props.uid}`}> */}
+            <Link
+              to={{
+                pathname: `/user/${this.props.uid}`,
+                state: {
+                  uidTest: this.props.uid
+                }
+              }}
+            >
               <Typography paragraph variant="title">
                 {this.props.username}
               </Typography>
+            </Link>
+            <Link to={{ pathname: `/companies/${this.props.company}` }}>
+              <Typography>{this.props.company}</Typography>
             </Link>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>

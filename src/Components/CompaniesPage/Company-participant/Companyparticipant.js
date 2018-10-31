@@ -44,7 +44,10 @@ class CompanyParticipant extends React.Component {
 
     this.state = {
       value: "1",
-      expanded: false
+      expanded: false,
+      username: this.props.user.username,
+      emailaddress: this.props.user.emailaddress,
+      uid: this.props.user.uid
     };
 
     this.handlePhaseChance = this.handlePhaseChance.bind(this);
@@ -63,8 +66,8 @@ class CompanyParticipant extends React.Component {
   render() {
     const { classes } = this.props;
     //const { match } = this.props;
-    const fullName = `${this.props.user.firstname} ${this.props.user.lastname}`;
-
+    const fullName = `${this.state.username}`;
+    console.log("USER", this.props.user);
     return (
       <div className="CompanyParticipant">
         <Badge
@@ -74,7 +77,7 @@ class CompanyParticipant extends React.Component {
         >
           <Card className={classes.card}>
             <CardContent>
-              <Link to={`/user/${this.props.user.emailaddress}`}>
+              <Link to={`/user/${this.state.uid}`}>
                 <Typography paragraph variant="title">
                   {fullName}
                 </Typography>

@@ -8,4 +8,5 @@ export const PASSWORD_CHANGE = "/pw-change";
 export const DASHBOARD = "/dashboard";
 export const COMPANIES = "/companies";
 export const COMPANY = "/companies/:company_name";
-export const PARTICIPANT = "/user/:participant_emailaddress";
+// export const PARTICIPANT = "/user/:participant_emailaddress";
+export const PARTICIPANT = "/user/:uid";

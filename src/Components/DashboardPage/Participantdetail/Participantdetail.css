@@ -7,6 +7,12 @@
   grid-gap: 20px;
 }
 
+.CompanyInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .demo-card-wide {
   width: 100%;
   padding: 20px;
@@ -15,6 +21,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   background-color: rgb(205, 220, 57);
+}
+
+.demo-card-square.mdl-card {
+  display: block;
 }
 
 .mdl-card__title {

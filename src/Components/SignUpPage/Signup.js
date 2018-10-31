@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { auth, db } from "../../Firebase/";
+//import Select from "react-select";
 
 import * as routes from "../../Constants/Routes";
 import "./Signup.css";
@@ -29,7 +30,10 @@ const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
   error: null,
-  phase: "Nieuw"
+  phase: "Nieuw",
+  company: "",
+  value: "",
+  companies: []
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -44,7 +48,7 @@ class SignUpForm extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, phase } = this.state;
+    const { username, email, passwordOne, phase, company } = this.state;
 
     const { history } = this.props;
 
@@ -52,7 +56,7 @@ class SignUpForm extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne, phase)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, username, email, phase)
+        db.doCreateUser(authUser.user.uid, username, email, phase, company)
           .then(() => {
             this.setState({ ...INITIAL_STATE });
             history.push(routes.ACCOUNT);
@@ -68,14 +72,38 @@ class SignUpForm extends Component {
     event.preventDefault();
   };
 
+  componentDidMount() {
+    db.onceGetCompanies().then(snapshot =>
+      this.setState({ companies: snapshot.val() })
+    );
+  }
+
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    console.log("company = ", this.state.company);
+
+    const companyList = Object.values(this.state.companies).map(company => {
+      // return { value: company.name, label: company.name };
+      return company.name;
+    });
+
+    console.log("companyList = ", companyList);
+
+    const {
+      username,
+      email,
+      passwordOne,
+      passwordTwo,
+      company,
+      error,
+      value
+    } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      username === "";
+      username === "" ||
+      company === "";
 
     return (
       <div className="SignUpForm">
@@ -124,6 +152,32 @@ class SignUpForm extends Component {
               placeholder="Confirm password"
             />
           </div>
+
+          <select
+            className="mdl-textfield mdl-js-textfield getmdl-select"
+            //value={this.state.company}
+            value={company}
+            onChange={event =>
+              this.setState(byPropKey("company", event.target.value))
+            }
+          >
+            <option value={value} disabled>
+              Select your organisation
+            </option>
+            {companyList.map(company => {
+              return (
+                <option
+                  className="mdl-menu__item"
+                  value={company}
+                  key={company}
+                >
+                  {company}
+                </option>
+              );
+            })}
+          </select>
+
+          <br />
           <button
             className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
             disabled={isInvalid}
@@ -131,7 +185,6 @@ class SignUpForm extends Component {
           >
             Sign Up
           </button>
-
           {error && <p>{error.message}</p>}
         </form>
       </div>

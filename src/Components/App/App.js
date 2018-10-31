@@ -233,10 +233,10 @@ class App extends Component {
             render={({ match }) => {
               return (
                 <CompanyDetail
-                  companies={this.state.companies}
-                  users={this.state.users.filter(
-                    user => user.company === match.params.company_name
-                  )}
+                  //companies={this.state.companies}
+                  // users={this.state.users.filter(
+                  //   user => user.company === match.params.company_name
+                  // )}
                   match={match}
                   //phases={this.state.phases}
                 />
