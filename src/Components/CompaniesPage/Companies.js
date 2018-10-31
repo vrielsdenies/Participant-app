@@ -28,7 +28,7 @@ class Companies extends React.Component {
           <div>
             <h1>Deelnemende bedrijven</h1>
           </div>
-          <CompanyList companies={this.state.companies} />
+          <CompanyList companies={companies} />
         </div>
       </div>
     );
