@@ -12,7 +12,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
-import { firebase } from "../../Firebase";
+import { db } from "../../Firebase";
 
 import "./Participant.css";
 
@@ -52,23 +52,23 @@ class ParticipantFB extends React.Component {
 
     this.state = {
       value: "1",
-      expanded: false
+      expanded: false,
+      phase: ""
     };
 
-    //this.handlePhaseChance = this.handlePhaseChance.bind(this);
     this.handleExpandClick = this.handleExpandClick.bind(this);
+    this.writeUserData = this.writeUserData.bind(this);
   }
 
-  // handlePhaseChance(event) {
-  //   this.props.phaseChance(this.props.user, event.target.value);
-  // }
+  writeUserData(event) {
+    const newPhase = event.target.value;
 
-  writeUserData(uid, event) {
-    var database = firebase.database();
+    db.updatePhase(this.props.uid, this.props.phase, newPhase);
 
-    database.ref("users/" + this.props.uid).update({
-      phase: event.target.value
+    this.setState({
+      phase: newPhase
     });
+    window.location.reload();
   }
 
   handleExpandClick = () => {
@@ -78,13 +78,11 @@ class ParticipantFB extends React.Component {
 
   render() {
     const { classes } = this.props;
-    //const { match } = this.props;
-    //const fullName = `${this.props.user.firstname} ${this.props.user.lastname}`;
+
     return (
       <div className="Participant">
         <Card className={classes.card}>
           <CardContent>
-            {/* <Link to={`/user/${this.props.uid}`}> */}
             <Link
               to={{
                 pathname: `/user/${this.props.uid}`,
@@ -116,8 +114,6 @@ class ParticipantFB extends React.Component {
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography>{this.props.email}</Typography>
-              <Typography>{this.props.phase}</Typography>
-              <Typography>{this.props.id}</Typography>
 
               <TextField
                 select

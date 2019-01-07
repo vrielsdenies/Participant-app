@@ -35,3 +35,8 @@ input {
   border-radius: 5px;
   font-size: 14px;
 }
+
+.mdl-textfield__input {
+  background-color: #efefef;
+  padding: 10px 10px;
+}

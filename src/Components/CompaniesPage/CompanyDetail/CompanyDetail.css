@@ -1,0 +1,13 @@
+.CompanyParticipants {
+  width: 90%;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.ParticipantsList {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 100px;
+  grid-gap: 20px;
+}

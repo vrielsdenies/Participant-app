@@ -1,6 +1,6 @@
 .ParticipantPage {
   display: grid;
-  width: 70%;
+  width: 80%;
   margin: 100px auto;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;

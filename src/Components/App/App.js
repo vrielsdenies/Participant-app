@@ -10,7 +10,7 @@ import PasswordForgetPage from "../PasswordforgetPage/Passwordforget";
 import PasswordChangeForm from "../PasswordchangeForm/Passwordchangeform";
 import Companies from "../CompaniesPage/Companies";
 import CompanyDetail from "../CompaniesPage/CompanyDetail/CompanyDetail";
-import ParticipantDetail from "../DashboardPage/Participantdetail/Participantdetail";
+import ParticipantDetail from "../Participantdetail/Participantdetail";
 import { BrowserRouter, Route } from "react-router-dom";
 import withAuthentication from "../WithAuthentication/withAuthentication";
 //import { db } from "../../Firebase";
@@ -23,40 +23,47 @@ class App extends Component {
     super(props);
 
     this.state = {
-      phases: ["Nieuw", "Wachten", "Nog niet actief", "Actief", "Klaar"],
-      //users: null,
-      companies: [
-        {
-          name: "Advier",
-          address: "Mijnbouwstraat 120",
-          place: "Delft"
-        },
-        {
-          name: "UVA",
-          address: "Vrijheidslaan 20H",
-          place: "Amsterdam"
-        },
-        {
-          name: "Bunker Theaterzaken",
-          address: "Kalverstraat 40",
-          place: "Amsterdam"
-        },
-        {
-          name: "UMCL",
-          address: "Scheveningsestraat 2",
-          place: "Leiden"
-        },
-        {
-          name: "Gemeente Rotterdam",
-          address: "Coolsingel 89",
-          place: "Rotterdam"
-        },
-        {
-          name: "013",
-          address: "Tilburgestraat 120",
-          place: "Tilburg"
-        }
+      phases: [
+        "Nieuw",
+        "Wachten",
+        "Nog niet actief",
+        "Actief",
+        "Klaar",
+        "Afgewezen"
       ],
+      //users: null,
+      // companies: [
+      //   {
+      //     name: "Advier",
+      //     address: "Mijnbouwstraat 120",
+      //     place: "Delft"
+      //   },
+      //   {
+      //     name: "UVA",
+      //     address: "Vrijheidslaan 20H",
+      //     place: "Amsterdam"
+      //   },
+      //   {
+      //     name: "Bunker Theaterzaken",
+      //     address: "Kalverstraat 40",
+      //     place: "Amsterdam"
+      //   },
+      //   {
+      //     name: "UMCL",
+      //     address: "Scheveningsestraat 2",
+      //     place: "Leiden"
+      //   },
+      //   {
+      //     name: "Gemeente Rotterdam",
+      //     address: "Coolsingel 89",
+      //     place: "Rotterdam"
+      //   },
+      //   {
+      //     name: "013",
+      //     address: "Tilburgestraat 120",
+      //     place: "Tilburg"
+      //   }
+      // ],
 
       participants: [
         {
@@ -165,8 +172,8 @@ class App extends Component {
             render={() => {
               return (
                 <HomePage
-                  //phases={this.state.phases}
-                  phaseChance={this.handlePhaseChance}
+                  phases={this.state.phases}
+                  // phaseChance={this.handlePhaseChance}
                 />
               );
             }}
@@ -182,6 +189,15 @@ class App extends Component {
                   phases={this.state.phases}
                   phaseChance={this.handlePhaseChance}
                 />
+              );
+            }}
+          />
+
+          <Route
+            path={routes.PARTICIPANT}
+            render={({ match }) => {
+              return (
+                <ParticipantDetail phases={this.state.phases} match={match} />
               );
             }}
           />
@@ -243,34 +259,6 @@ class App extends Component {
               );
             }}
           />
-          <Route
-            exact
-            path={routes.PARTICIPANT}
-            render={({ match }) => {
-              return (
-                <ParticipantDetail
-                  participants={this.state.participants.filter(
-                    user => user.emailaddress === match.params.user_emailaddress
-                  )}
-                  match={match}
-                />
-              );
-            }}
-          />
-          {/* <Route
-            exact
-            path={routes.PARTICIPANT}
-            render={({ match }) => {
-              return (
-                <ParticipantDetail
-                  users={Object.values(users).filter(
-                    user => user.email === phaseName
-                  )}
-                  match={match}
-                />
-              );
-            }}
-          /> */}
         </div>
       </BrowserRouter>
     );

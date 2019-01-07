@@ -17,7 +17,6 @@ class HomePage extends Component {
 
     this.state = {
       users: null,
-      phases: ["Nieuw", "Wachten", "Nog niet actief", "Actief", "Klaar"],
       searchTerm: ""
     };
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -37,7 +36,6 @@ class HomePage extends Component {
 
   render() {
     const { users } = this.state;
-    console.log("users:", this.state.users);
 
     return (
       <div>
@@ -51,14 +49,11 @@ class HomePage extends Component {
                 onChange={this.onSearchChange}
                 placeholder="Search for user"
               />
-              {/* <label className="mdl-textfield__label" htmlFor="search">
-                Search for user
-              </label> */}
             </div>
           </form>
         </div>
         <div className="Pipeline-Columns">
-          {this.state.phases.map(phaseName => {
+          {this.props.phases.map(phaseName => {
             return (
               <div className="Pipeline-Column" key={phaseName}>
                 <div className="Column-Header">
@@ -73,7 +68,7 @@ class HomePage extends Component {
                     users={Object.values(users)
                       .filter(isSearched(this.state.searchTerm))
                       .filter(user => user.phase === phaseName)}
-                    phases={this.state.phases}
+                    phases={this.props.phases}
                     phaseChance={this.props.phaseChance}
                     phaseName={phaseName}
                   />

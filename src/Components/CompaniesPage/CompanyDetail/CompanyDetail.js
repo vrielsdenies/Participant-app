@@ -23,23 +23,25 @@ class CompanyDetail extends React.Component {
     //console.log("PARTICIPANTS", this.state.users);
 
     return (
-      <div>
+      <div className="CompanyParticipants">
         <h1>{this.props.match.params.company_name}</h1>
         <h3>Deelnemers</h3>
-        {!!users &&
-          Object.values(users)
-            .filter(
-              user => user.company === this.props.match.params.company_name
-            )
-            .map(user => {
-              return (
-                <CompanyParticipant
-                  user={user}
-                  //phases={this.props.phases}
-                  key={user.emailaddress}
-                />
-              );
-            })}
+        <div className="ParticipantsList">
+          {!!users &&
+            Object.values(users)
+              .filter(
+                user => user.company === this.props.match.params.company_name
+              )
+              .map(user => {
+                return (
+                  <CompanyParticipant
+                    user={user}
+                    //phases={this.props.phases}
+                    key={user.emailaddress}
+                  />
+                );
+              })}
+        </div>
       </div>
     );
   }
