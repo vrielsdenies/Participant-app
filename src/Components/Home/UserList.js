@@ -3,8 +3,7 @@ import ParticipantFB from "./ParticipantFB";
 
 class UserList extends React.Component {
   render() {
-    const usersFiltered = this.props.users;
-    console.log(usersFiltered);
+    // const usersFiltered = this.props.users;
 
     return (
       <div className="Participantlist">

@@ -4,13 +4,12 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Badge from "@material-ui/core/Badge";
 import { Link } from "react-router-dom";
 import "./Companyparticipant.css";
 
 const styles = theme => ({
   card: {
-    maxWidth: 300
+    maxWidth: 400
   },
   media: {
     height: 0,
@@ -70,24 +69,18 @@ class CompanyParticipant extends React.Component {
     console.log("USER", this.props.user);
     return (
       <div className="CompanyParticipant">
-        <Badge
-          color="primary"
-          badgeContent={this.props.user.rides}
-          className="Badge"
-        >
-          <Card className={classes.card}>
-            <CardContent>
-              <Link to={`/user/${this.state.uid}`}>
-                <Typography paragraph variant="title">
-                  {fullName}
-                </Typography>
-              </Link>
-              <Link to={`/companies/${this.props.user.company}`}>
-                <Typography>{this.props.user.company}</Typography>
-              </Link>
-            </CardContent>
-          </Card>
-        </Badge>
+        <Card className={classes.card}>
+          <CardContent>
+            <Link to={`/user/${this.state.uid}`}>
+              <Typography paragraph variant="title">
+                {fullName}
+              </Typography>
+            </Link>
+            <Link to={`/companies/${this.props.user.company}`}>
+              <Typography>{this.props.user.company}</Typography>
+            </Link>
+          </CardContent>
+        </Card>
       </div>
     );
   }
